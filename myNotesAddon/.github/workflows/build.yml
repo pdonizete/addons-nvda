@@ -1,0 +1,39 @@
+name: Build NVDA Add-on
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.7'
+
+    - name: Install SCons
+      run: pip install scons
+
+    - name: Run SCons
+      # Assuming the SConstruct file is in the root of the repository,
+      # and the add-on source is in the myNotesAddon directory.
+      # The scons command should be run from the directory containing SConstruct.
+      # If SConstruct is in myNotesAddon, then cd myNotesAddon first.
+      # Based on the previous step, SConstruct is in myNotesAddon.
+      run: |
+        cd myNotesAddon
+        scons
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: MyNotes-addon
+        # SCons will output the .nvda-addon file in the directory where scons is run.
+        # If scons is run in myNotesAddon, the path will be relative to that.
+        path: myNotesAddon/*.nvda-addon

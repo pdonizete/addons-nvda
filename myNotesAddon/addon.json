@@ -1,0 +1,12 @@
+{
+    "name": "MyNotes",
+    "summary": "Quickly save selected text to a personal notes file and view your notes easily.",
+    "version": "1.0",
+    "author": "Jules <jules@example.com>",
+    "description": "An add-on to copy selected text from any application and append it to a dedicated notes file. You can also view all your saved notes in a browseable window. Gestures: Control+Insert+Q to copy, Control+Insert+A to show notes.",
+    "url": "https://github.com/yourusername/MyNotesAddon",
+    "docFileName": "readme.md",
+    "minNVDAVersion": "2019.3",
+    "lastTestedNVDAVersion": "2023.1",
+    "arch": "any"
+}

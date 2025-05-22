@@ -1,0 +1,9 @@
+# SConstruct
+import os
+Import('env')
+
+# Get the addon name from the directory name
+addonName = os.path.basename(os.getcwd())
+# version is read from addon.json by default by scons nvda extension
+# Control script for building the add-on
+env.NVDAExtension(addonName)
